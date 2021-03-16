@@ -4,12 +4,12 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class WorkedDay implements Day {
-    DayOfWeek hourlyrate = null;
-    LocalDate date = LocalDate.now();
+    DayOfWeek hourlyrate;
+    LocalDate date;
     Slot[] timeslots = new Slot[100];
 
     public WorkedDay(LocalDate date) {
-
+        this.date = date;
     }
 
     @Override
@@ -20,8 +20,8 @@ public class WorkedDay implements Day {
     @Override
     public void addSlot(Slot slot) {
         for (var i = 0; i < timeslots.length; i++) {
-            if(timeslots[i]==null){
-                timeslots[i]=slot;
+            if (timeslots[i] == null) {
+                timeslots[i] = slot;
                 i--;
             }
         }
@@ -29,8 +29,8 @@ public class WorkedDay implements Day {
 
     @Override
     public long totalWorkedMinutes() {
-        for (Slot el:timeslots) {
-            if ((el!=null)){
+        for (Slot el : timeslots) {
+            if ((el != null)) {
 
             }
         }

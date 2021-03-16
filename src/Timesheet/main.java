@@ -15,8 +15,8 @@ public class main {
         System.out.println("7. Print detailed Paycheck");
         System.out.println("8. Quit application");
         TimesheetService service = new TimesheetServiceImpl();
-        var runApp = false;
-        while (!runApp) {
+        var runApp = true;
+        while (runApp) {
             int input = Keyboard.askForNumber(Keyboard.keyboard.next());
             System.out.println("Your choice is " + input);
             if (input == 1) {
@@ -26,6 +26,8 @@ public class main {
 
             } else if (input == 2) {
                 Week week = service.createWeek();
+
+
             } else if (input == 3) {
 
 
@@ -38,7 +40,7 @@ public class main {
             } else if (input == 7) {
 
             }else if (input == 8){
-               runApp = true;
+               runApp = false;
             }
 
         }

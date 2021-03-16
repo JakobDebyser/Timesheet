@@ -1,6 +1,8 @@
 package Timesheet;
 
+import java.time.Duration;
 import java.time.LocalTime;
+
 import java.time.format.DateTimeFormatter;
 
 public class TimeSlot implements Slot{
@@ -8,16 +10,24 @@ public class TimeSlot implements Slot{
     private long totalMinutes ;
     private LocalTime start ;
     private LocalTime end;
-
     public TimeSlot(LocalTime start, LocalTime end){
         this.start = start;
         this.end= end;
-
+        this.totalMinutes = Duration.between(end,start).toMinutes();
     }
     public TimeSlot(LocalTime start,LocalTime end,String text){
         this.start = start;
         this.end = end;
         description= text;
+        totalMinutes = Duration.between(end,start).toMinutes();
+    }
+
+    public long getTotalMinutes() {
+        return totalMinutes;
+    }
+
+    public void setTotalMinutes(long totalMinutes) {
+        this.totalMinutes = totalMinutes;
     }
 
     @Override

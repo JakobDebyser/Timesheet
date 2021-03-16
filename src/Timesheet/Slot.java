@@ -9,7 +9,7 @@ public interface Slot {
 
     void printSlotInfo();
 
-    String description = "Slot";
+    String description ="slot";
     LocalTime end = null;
     LocalTime start = null;
     long totalMinutes = 0;
