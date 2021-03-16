@@ -1,25 +1,54 @@
 package Timesheet;
 
+
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 import java.util.Scanner;
 
 public class Keyboard {
     static Scanner keyboard = new Scanner(System.in);
 
-    public static String askForText(String text){
-        System.out.println();
-        return text;
-    }
-    public static int askForNumber(String text){
-        String number = "";
-        if (!text.contains("[a-zA-Z]+") && text.length() >=1) number = text;
-        else{
-            System.out.println("Enter only a number");
-            Keyboard.keyboard.next();
-        }
+    public static String askForTimeslot(String text) {
+        System.out.println(text);
+        System.out.println("choose between timeslot or breakslot");
+        return keyboard.next();
 
-        return Integer.parseInt(number);
     }
-    public static double askForDouble(String text){
-        return Double.parseDouble(text);
+
+    public static int askForNumber(String text) {
+
+        System.out.println(text);
+        return keyboard.nextInt();
+    }
+
+    public static LocalDate askForDate(String text) {
+        System.out.println(text);
+        System.out.println("example date: dd/mm/yyyy ");
+        Scanner keyboard = new Scanner(System.in);
+        String date = keyboard.nextLine();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return LocalDate.parse(date,formatter);
+    }
+
+    public static LocalTime askForTime(String text) {
+        System.out.println(text);
+        System.out.println("enter time as follow: hh:mm:ss");
+        Scanner keyboard = new Scanner(System.in);
+        String starttime = keyboard.nextLine();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        return LocalTime.parse(starttime,formatter);
+    }
+
+    public static int askForNewMoment(String s) {
+        System.out.println(s);
+        System.out.println("days are numbered between 0-6");
+        Scanner keyboard = new Scanner(System.in);
+        String input = keyboard.next();
+        return Integer.parseInt(input);
     }
 }
