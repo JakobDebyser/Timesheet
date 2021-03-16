@@ -8,6 +8,10 @@ public class WorkedWeek extends WorkedDay implements Week {
         super(date);
     }
 
+    public WorkedWeek() {
+        super();
+    }
+
     @Override
     public void removeSlot(Slot slot) {
 

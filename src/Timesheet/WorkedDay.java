@@ -12,6 +12,10 @@ public class WorkedDay implements Day {
         this.date = date;
     }
 
+    public WorkedDay() {
+
+    }
+
     @Override
     public void removeSlot(Slot slot) {
 

@@ -2,6 +2,9 @@ package Timesheet;
 
 import Timesheet.Keyboard;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class main {
     public static void main(String[] args) {
         System.out.println("What do you want to do?");
@@ -14,7 +17,7 @@ public class main {
         System.out.println("6. Print Paycheck");
         System.out.println("7. Print detailed Paycheck");
         System.out.println("8. Quit application");
-        TimesheetService service = new TimesheetServiceImpl();
+
         var runApp = true;
         while (runApp) {
             int input = Keyboard.askForNumber(Keyboard.keyboard.next());
@@ -25,7 +28,9 @@ public class main {
                 }
 
             } else if (input == 2) {
-                Week week = service.createWeek();
+                LocalDate datum = LocalDate.now();
+                Week week = new WorkedWeek();
+
 
 
             } else if (input == 3) {
