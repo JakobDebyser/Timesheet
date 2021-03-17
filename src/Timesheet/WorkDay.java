@@ -2,6 +2,7 @@ package Timesheet;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class WorkDay implements Day {
     private DayOfWeek hourlyrate;
@@ -45,14 +46,15 @@ public class WorkDay implements Day {
 
     }
 
+
     @Override
-    public void addSlot(Slot slot) {
-        for (var i = 0; i < timeslots.length; i++) {
-            if (timeslots[i] == null) {
-                timeslots[i] = slot;
-                i--;
-            }
-        }
+    public void addTimeslot(LocalTime from, LocalTime until) {
+        new TimeSlot(from,until);
+    }
+
+    @Override
+    public void addBreakSlot(LocalTime from, LocalTime until) {
+
     }
 
     @Override
