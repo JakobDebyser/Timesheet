@@ -9,23 +9,22 @@ public class WorkDay implements Day {
     private double hourlyrate;
     private LocalDate date;
     private int size;
+
     public WorkDay(LocalDate date) {
         setDate(date);
     }
 
-
-    public WorkDay() {
-
-    }
-
+    @Override
     public Slot[] getSlots() {
         return slots;
     }
 
+    @Override
     public double getHourlyrate() {
         return hourlyrate;
     }
 
+    @Override
     public void setHourlyrate(DayOfWeek day, LocalTime time) {
         if (day.getValue() < 5) {
             if (time.getHour() > 8 && time.getHour() < 18) {
@@ -41,9 +40,6 @@ public class WorkDay implements Day {
 
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
 
     public void setDate(LocalDate date) {
         this.date = date;
@@ -51,9 +47,9 @@ public class WorkDay implements Day {
 
     @Override
     public void removeSlot(Slot slot) {
-        for (var i=0;i<slots.length;i++){
-            if (slots[i].equals(slot)){
-                slots[i]=null;
+        for (var i = 0; i < slots.length; i++) {
+            if (slots[i].equals(slot)) {
+                slots[i] = null;
             }
         }
     }
@@ -73,13 +69,18 @@ public class WorkDay implements Day {
     }
 
     @Override
+    public LocalDate getDate() {
+        return date;
+    }
+
+    @Override
     public double totalWorkedMinutes() {
-        double sum=0;
-            for (Slot slot:slots){
-               if (slot.equals(TimeSlot.class)){
-                   sum+= slot.getTotalMinutes();
-               }
-            }
+        double sum = 0;
+        for (Slot slot : slots) {
+
+            sum += slot.getTotalMinutes();
+
+        }
 
         return sum;
     }
@@ -99,6 +100,6 @@ public class WorkDay implements Day {
 
     @Override
     public String toString() {
-        return null;
+        return getDate().toString();
     }
 }

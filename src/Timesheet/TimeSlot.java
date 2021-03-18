@@ -39,8 +39,8 @@ public class TimeSlot implements Slot {
         return totalMinutes;
     }
 
-    public void setTotalMinutes(LocalTime startminute, LocalTime endmin) {
-        totalMinutes = endmin.getMinute() - startminute.getMinute();
+    public void setTotalMinutes(LocalTime startminute, LocalTime endminute) {
+        totalMinutes = endminute.getMinute() - startminute.getMinute();
     }
 
     @Override

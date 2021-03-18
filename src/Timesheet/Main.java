@@ -6,7 +6,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 
-public class main {
+public class Main {
     public static void main(String[] args) {
         System.out.println("What do you want to do?");
         System.out.println("type in the number that corresponds with your choice:");
@@ -18,12 +18,12 @@ public class main {
         System.out.println("6. Print Paycheck");
         System.out.println("7. Print detailed Paycheck");
         System.out.println("8. Quit application");
-
+        Week workWeek=null;
         boolean runApp = true;
         while (runApp) {
             int input = Keyboard.askForNumber("Make your choice");
             System.out.println("Your choice is " + input);
-            Week workWeek=null;
+
             if (input == 1) {
                 for (Rates el : Rates.values()) {
                     Rates.printRates(el);
@@ -52,12 +52,11 @@ public class main {
                 System.out.println("endtime is " + until.format(formatter));
                 if (typeOfSlot.equals("timeslot")) {
 
-                   workWeek = WorkWeek.getWeek();
                     Day day = workWeek.getDay(start_Moment);// van die week zeg welke dag het is met start_moment
                     day.addTimeslot(from, until);// maak een timeslot aan met beginuur from en einduur until
                 } else if (typeOfSlot.equals("breakslot")) {
 
-                    workWeek = workWeek.getWeek();
+
                     Day day = workWeek.getDay(start_Moment);
                     day.addBreakSlot(from, until);
 
@@ -68,6 +67,12 @@ public class main {
             } else if (input == 5) {
 
             } else if (input == 6) {
+                for (var i =0;i<6;i++) {
+                    System.out.println(workWeek.getDay(i).getDate());
+                    System.out.println(workWeek.getDay(i).getHourlyrate());
+                    System.out.println(workWeek.getDay(i).totalWorkedMinutes());
+
+                }
 
             } else if (input == 7) {
 

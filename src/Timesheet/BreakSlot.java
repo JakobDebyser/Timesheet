@@ -20,7 +20,7 @@ public class BreakSlot implements Slot {
     }
 
     public void setTotalMinutes(LocalTime start,LocalTime end) {
-        totalMinutes = end.getMinute()- start.getMinute();
+        totalMinutes =  start.getMinute() - end.getMinute();
     }
 
     public LocalTime getStart() {
