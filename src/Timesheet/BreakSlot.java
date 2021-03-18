@@ -15,7 +15,7 @@ public class BreakSlot implements Slot {
 
     }
 
-    public long getTotalMinutes() {
+    public double getTotalMinutes() {
         return totalMinutes;
     }
 

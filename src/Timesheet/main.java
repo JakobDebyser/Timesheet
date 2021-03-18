@@ -6,8 +6,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 
-
-
 public class main {
     public static void main(String[] args) {
         System.out.println("What do you want to do?");
@@ -23,9 +21,9 @@ public class main {
 
         boolean runApp = true;
         while (runApp) {
-            Week workWeek=null;
             int input = Keyboard.askForNumber("Make your choice");
             System.out.println("Your choice is " + input);
+            Week workWeek=null;
             if (input == 1) {
                 for (Rates el : Rates.values()) {
                     Rates.printRates(el);
@@ -39,9 +37,7 @@ public class main {
                 workWeek = new WorkWeek(start);
 
 
-
             } else if (input == 3) {
-                if (workWeek ==  null)throw new NullPointerException("you have not made a new workweek");
 
                 int start_Moment = Keyboard.askForNewMoment("on which day of your week do you want to add a new slot?");
 
@@ -55,11 +51,15 @@ public class main {
                 LocalTime until = Keyboard.askForTime("end time");
                 System.out.println("endtime is " + until.format(formatter));
                 if (typeOfSlot.equals("timeslot")) {
+
+                   workWeek = WorkWeek.getWeek();
                     Day day = workWeek.getDay(start_Moment);// van die week zeg welke dag het is met start_moment
                     day.addTimeslot(from, until);// maak een timeslot aan met beginuur from en einduur until
-                } else if(typeOfSlot.equals("breakslot")) {
+                } else if (typeOfSlot.equals("breakslot")) {
+
+                    workWeek = workWeek.getWeek();
                     Day day = workWeek.getDay(start_Moment);
-                    day.addBreakSlot(from,until);
+                    day.addBreakSlot(from, until);
 
                 }
 

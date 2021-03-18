@@ -8,6 +8,7 @@ public interface Slot {
     LocalTime WORKDAY_END_HOUR = null;
 
     void printSlotInfo();
+    double getTotalMinutes();
 
     String description ="slot";
     LocalTime end = null;

@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 
 public class TimeSlot implements Slot {
     private String description = "TimeSlot";
-    private long totalMinutes;
+    private double totalMinutes;
     private LocalTime start;
     private LocalTime end;
 
@@ -35,7 +35,7 @@ public class TimeSlot implements Slot {
         this.end = end;
     }
 
-    public long getTotalMinutes() {
+    public double getTotalMinutes() {
         return totalMinutes;
     }
 
