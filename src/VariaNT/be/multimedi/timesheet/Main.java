@@ -1,4 +1,4 @@
-package timesheet;
+package VariaNT.be.multimedi.timesheet;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -8,7 +8,8 @@ import java.time.format.DateTimeFormatter;
 public class Main {
     final static String TIMESLOT = "timeslot";
     final static String BREAKSLOT = "breakslot";
-
+    static DateTimeFormatter dateformat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    static DateTimeFormatter timeformat = DateTimeFormatter.ofPattern("hh:mm");
     public static void main(String[] args) {
         System.out.println("What do you want to do?");
         System.out.println("type in the number that corresponds with your choice:");
@@ -21,6 +22,7 @@ public class Main {
         System.out.println("7. Print detailed Paycheck");
         System.out.println("8. Quit application");
         Week workWeek = null;
+        LocalDate start;
 
         boolean runApp = true;
         while (runApp) {
@@ -33,12 +35,14 @@ public class Main {
                 }
 
             } else if (input == 2) {
-                LocalDate start = Keyboard.askForDate("When do you start your week?");
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                System.out.println("Your workweek start at " + start.format(formatter));
-                System.out.println("you start at a " + start.getDayOfWeek());
-                workWeek = new WorkWeek(start);
-
+                if (workWeek== null) {
+                     start = Keyboard.askForDate("When do you start your week?");
+                    System.out.println("Your workweek start at " + start.format(dateformat));
+                    System.out.println("you start at a " + start.getDayOfWeek());
+                    workWeek = new WorkWeek(start);
+                }else{
+                    System.out.println("you have already made a workweek");
+                }
 
             } else if (input == 3) {
                 if (workWeek == null) {
@@ -52,11 +56,11 @@ public class Main {
 
                     LocalTime from = Keyboard.askForTime("start time");
 
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm");
-                    System.out.println("starttime is " + from.format(formatter));
+
+                    System.out.println("starttime is " + from.format(timeformat));
 
                     LocalTime until = Keyboard.askForTime("end time");
-                    System.out.println("endtime is " + until.format(formatter));
+                    System.out.println("endtime is " + until.format(timeformat));
                     if (typeOfSlot.equals(TIMESLOT)) {
 
                         Day day = workWeek.getDay(start_Moment);// van die week zeg welke dag het is met start_moment
@@ -71,8 +75,18 @@ public class Main {
                 }
 
             } else if (input == 4) {
+                if (workWeek==null){
+                    System.out.println("there is not yet a workweek created");
+                }
 
             } else if (input == 5) {
+                if (workWeek !=null){
+                    // als de week gemaakt is, maak hem dan terug leeg.
+                    System.out.println("you have deleted the workweek that started at "+workWeek.getDay(0).getDate().format(dateformat));
+                    workWeek = null;
+                }else{
+                    System.out.println("there is no workweek to reset");
+                }
 
             } else if (input == 6) {
                 if (workWeek == null) {
@@ -85,13 +99,16 @@ public class Main {
                             Slot slot = workWeek.getDay(i).getSlots()[j];
                             day.setHourlyrate(day, slot.getStart(), slot.getEnd());
                             double result = day.getHourlyrate() * slot.getTotalMinutes();
-
+                            System.out.println(result);
                         }
                     }
                 }
 
 
             } else if (input == 7) {
+                if (workWeek==null){
+                    System.out.println("there is not yet a workweek created");
+                }
 
             } else if (input == 8) {
                 runApp = false;

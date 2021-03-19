@@ -1,4 +1,4 @@
-package timesheet;
+package VariaNT.be.multimedi.timesheet;
 
 
 import java.time.LocalDate;
@@ -22,4 +22,6 @@ public class WorkWeek implements Week {
 
         return days[start_moment];
     }
+
+
 }

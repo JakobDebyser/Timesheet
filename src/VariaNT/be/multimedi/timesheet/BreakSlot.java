@@ -1,4 +1,4 @@
-package timesheet;
+package VariaNT.be.multimedi.timesheet;
 
 import java.time.LocalTime;
 

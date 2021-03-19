@@ -1,4 +1,4 @@
-package timesheet;
+package VariaNT.be.multimedi.timesheet;
 
 public enum Rates {
     MON(15, 20),

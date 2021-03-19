@@ -1,4 +1,4 @@
-package timesheet;
+package VariaNT.be.multimedi.timesheet;
 
 public class Processor {
     public double getHours(double input){
