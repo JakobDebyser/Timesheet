@@ -1,6 +1,5 @@
-package Timesheet;
+package timesheet;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -15,6 +14,11 @@ public class WorkDay implements Day {
     }
 
     @Override
+    public int getSizeOfslots() {
+        return size;
+    }
+
+    @Override
     public Slot[] getSlots() {
         return slots;
     }
@@ -25,24 +29,19 @@ public class WorkDay implements Day {
     }
 
     @Override
-    public void setHourlyrate(DayOfWeek day, LocalTime time) {
-        if (day.getValue() < 5) {
-            if (time.getHour() > 8 && time.getHour() < 18) {
+    public void setHourlyrate(Day day, LocalTime start, LocalTime end) {
+        if (day.getDate().getDayOfWeek().ordinal() < Rates.FRI.ordinal()) {
+            if (start.getHour() > 8 && end.getHour() < 18) {
                 hourlyrate = Rates.MON.normalHourlyRate;
             } else {
                 hourlyrate = Rates.MON.overtimeHourlyRate;
             }
-        } else if (day.getValue() == Rates.SAT.ordinal()) {
+        } else if (day.getDate().getDayOfWeek().ordinal() == Rates.SAT.ordinal()) {
             hourlyrate = Rates.SAT.normalHourlyRate;
         } else {
             hourlyrate = Rates.SUN.normalHourlyRate;
         }
 
-    }
-
-
-    public void setDate(LocalDate date) {
-        this.date = date;
     }
 
     @Override
@@ -53,7 +52,6 @@ public class WorkDay implements Day {
             }
         }
     }
-
 
     @Override
     public void addTimeslot(LocalTime from, LocalTime until) {
@@ -71,6 +69,10 @@ public class WorkDay implements Day {
     @Override
     public LocalDate getDate() {
         return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     @Override

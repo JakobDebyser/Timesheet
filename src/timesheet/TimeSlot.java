@@ -1,6 +1,5 @@
-package Timesheet;
+package timesheet;
 
-import java.time.Duration;
 import java.time.LocalTime;
 
 import java.time.format.DateTimeFormatter;
@@ -18,7 +17,7 @@ public class TimeSlot implements Slot {
 
     }
 
-
+    @Override
     public LocalTime getStart() {
         return start;
     }
@@ -27,6 +26,7 @@ public class TimeSlot implements Slot {
         this.start = start;
     }
 
+    @Override
     public LocalTime getEnd() {
         return end;
     }

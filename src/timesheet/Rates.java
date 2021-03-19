@@ -1,4 +1,4 @@
-package Timesheet;
+package timesheet;
 
 public enum Rates {
     MON(15, 20),

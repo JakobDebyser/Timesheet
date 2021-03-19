@@ -1,4 +1,4 @@
-package Timesheet;
+package timesheet;
 
 import java.time.LocalTime;
 

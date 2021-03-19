@@ -1,4 +1,4 @@
-package Timesheet;
+package timesheet;
 
 import java.time.LocalTime;
 
@@ -11,8 +11,8 @@ public interface Slot {
     double getTotalMinutes();
 
     String description ="slot";
-    LocalTime end = null;
-    LocalTime start = null;
+    LocalTime getEnd() ;
+    LocalTime getStart();
     long totalMinutes = 0;
 
 }

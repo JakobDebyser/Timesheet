@@ -1,4 +1,4 @@
-package Timesheet;
+package timesheet;
 
 public interface Week {
 
