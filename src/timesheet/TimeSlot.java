@@ -35,6 +35,7 @@ public class TimeSlot implements Slot {
         this.end = end;
     }
 
+    @Override
     public double getTotalMinutes() {
         return totalMinutes;
     }
@@ -60,7 +61,7 @@ public class TimeSlot implements Slot {
 
     @Override
     public void printSlotInfo() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         System.out.println(formatter.format(start));
         System.out.println(formatter.format(end));
     }

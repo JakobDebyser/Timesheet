@@ -6,7 +6,8 @@ import java.time.format.DateTimeFormatter;
 
 
 public class Main {
-    final static String TIMESLOT = "Timeslot";
+    final static String TIMESLOT = "timeslot";
+    final static String BREAKSLOT = "breakslot";
 
     public static void main(String[] args) {
         System.out.println("What do you want to do?");
@@ -56,11 +57,11 @@ public class Main {
 
                     LocalTime until = Keyboard.askForTime("end time");
                     System.out.println("endtime is " + until.format(formatter));
-                    if (typeOfSlot.equals("timeslot")) {
+                    if (typeOfSlot.equals(TIMESLOT)) {
 
                         Day day = workWeek.getDay(start_Moment);// van die week zeg welke dag het is met start_moment
                         day.addTimeslot(from, until);// maak een timeslot aan met beginuur from en einduur until
-                    } else if (typeOfSlot.equals("breakslot")) {
+                    } else if (typeOfSlot.equals(BREAKSLOT)) {
 
 
                         Day day = workWeek.getDay(start_Moment);
